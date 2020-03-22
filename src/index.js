@@ -25,7 +25,7 @@ function expressionCalculator(expr) {
 //console.log(expr);
 
     if (expr.includes('/0')) {					// проверка деления на 0 в лоб
-        return 'TypeError: Division by zero.';
+        throw new Error ('TypeError: Division by zero.');
     }
 
     let openBrecetsCount = 0;				// проверка парности скобок
@@ -39,7 +39,7 @@ function expressionCalculator(expr) {
         }
     }
     if (openBrecetsCount !== closeBrecetsCount) {
-        return 'ExpressionError: Brackets must be paired';
+        throw new Error("ExpressionError: Brackets must be paired");
     }
 
     let numbers = expr.split(/[+-/()*_]/).filter(item => item != '');  // цифры в массив
